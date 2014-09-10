@@ -318,6 +318,7 @@ void client_start(int clientfd, int tunfd, const char *key)
         return;
     }
 
+    puts("login successful");
     for (;;) {
         struct timeval tv;
         tv.tv_sec = SELECT_TIMEOUT;
@@ -349,5 +350,4 @@ void client_start(int clientfd, int tunfd, const char *key)
             }
         }
     }
-    close(tunfd);
 }
