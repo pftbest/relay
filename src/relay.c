@@ -124,7 +124,6 @@ int relay_start(const struct relay_config *config)
         }
         client_start(clientfd, tunfd, config->key);
         close_connection(&clientfd);
-        delay();
         if (config->is_server) {
             return EXIT_SUCCESS;
         }
