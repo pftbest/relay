@@ -1,7 +1,8 @@
 #ifndef RELAY_H
 #define RELAY_H
 
-struct relay_config {
+struct relay_config
+{
     int is_server;
     const char *key;
     const char *tun_device;

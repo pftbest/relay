@@ -311,7 +311,8 @@ static int login(int clientfd, const char *key, char des_key[DES_KEY_SIZE])
     return 1;
 }
 
-static void set_timeouts(int socketfd) {
+static void set_timeouts(int socketfd)
+{
     struct timeval tv;
     tv.tv_sec = RECEIVE_TIMEOUT;
     tv.tv_usec = 0;

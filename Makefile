@@ -38,6 +38,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 # ============================================================================ #
 
 format:
-	astyle-kdelibs
+	./format.sh
 
 .PHONY: all clean format

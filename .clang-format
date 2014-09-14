@@ -1,0 +1,6 @@
+BasedOnStyle: WebKit
+PointerAlignment: Right
+BreakBeforeBraces: Linux
+AlignTrailingComments: true
+AllowShortFunctionsOnASingleLine: None
+KeepEmptyLinesAtTheStartOfBlocks: false
