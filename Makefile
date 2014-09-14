@@ -13,7 +13,7 @@ OBJECTS = main.o relay.o tun.o client.o util.o
 
 COMMON = -g -Wall -march=$(MARCH) -O0 -flto -I$(SRCDIR)
 CFLAGS  = $(COMMON) -std=gnu99
-LDFLAGS = $(COMMON) -lcrypt -Wl,-O1,--sort-common,--as-needed,-z,relro
+LDFLAGS = $(COMMON) -lcrypt -pthread -Wl,-O1,--sort-common,--as-needed,-z,relro
 
 # ============================================================================ #
 
