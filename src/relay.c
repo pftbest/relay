@@ -17,14 +17,14 @@
 int tunfd = 0;
 int serverfd = 0;
 
-static void close_connection(int *fd)
+static void close_connection(int *socketfd)
 {
-    if (*fd > 0) {
-        printf("connection closed: [%d]\n", *fd);
-        shutdown(*fd, SHUT_RDWR);
-        close(*fd);
+    if (*socketfd > 0) {
+        printf("connection closed: [%d]\n", *socketfd);
+        shutdown(*socketfd, SHUT_RDWR);
+        close(*socketfd);
     }
-    *fd = 0;
+    *socketfd = 0;
 }
 
 static void relay_signal_handler(int signal)

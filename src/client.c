@@ -311,8 +311,24 @@ static int login(int clientfd, const char *key, char des_key[DES_KEY_SIZE])
     return 1;
 }
 
+static void set_timeouts(int socketfd) {
+    struct timeval tv;
+    tv.tv_sec = RECEIVE_TIMEOUT;
+    tv.tv_usec = 0;
+    if (setsockopt(socketfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0) {
+        perror("setsockopt failed");
+    }
+    tv.tv_sec = RECEIVE_TIMEOUT;
+    tv.tv_usec = 0;
+    if (setsockopt(socketfd, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv)) < 0) {
+        perror("setsockopt failed");
+    }
+}
+
 void client_start(int clientfd, int tunfd, const char *key)
 {
+    set_timeouts(clientfd);
+
     char des_key[DES_KEY_SIZE];
     if (login(clientfd, key, des_key) < 0) {
         return;
