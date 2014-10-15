@@ -47,7 +47,7 @@ static void relay_signal_handler(int signal)
 
 static void delay()
 {
-    usleep(1000000);
+    usleep(500000);
 }
 
 static void *relay_client_thread(void *arg)
@@ -177,6 +177,7 @@ int relay_start(const struct relay_config *config)
             relay_start_client_thread(clientfd, config->key);
         } else {
             relay_start_client(clientfd, config->key);
+            delay();
         }
     }
 
