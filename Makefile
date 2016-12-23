@@ -11,9 +11,9 @@ SRCDIR  = src
 
 OBJECTS = main.o relay.o tun.o client.o util.o
 
-COMMON = -g -Wall -march=$(MARCH) -O0 -flto -I$(SRCDIR)
+COMMON = -g -Wall -march=$(MARCH) -O3 -flto -I$(SRCDIR) -pthread
 CFLAGS  = $(COMMON) -std=gnu99
-LDFLAGS = $(COMMON) -lcrypt -pthread -Wl,-O1,--sort-common,--as-needed,-z,relro
+LDFLAGS = $(COMMON) -lcrypt
 
 # ============================================================================ #
 
@@ -29,7 +29,7 @@ $(BINDIR)/$(TARGET).lss: $(BINDIR)/$(TARGET)
 
 $(BINDIR)/$(TARGET): $(OBJLIST)
 	mkdir -p $(dir $@)
-	$(CROSS_COMPILE)gcc $(LDFLAGS) -o $@ $^
+	$(CROSS_COMPILE)gcc $(LDFLAGS) -o $@ $^ -lcrypt
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(dir $@)
